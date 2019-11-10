@@ -55,17 +55,15 @@
 
                 <br>
 
-                <h4>Passengers</h4>
-                <div>
-
-                </div>
-
-                <br>
-
                 <h4>Total</h4>
                 <div>
                     <p><?= $out_price + $ret_price; ?> €</p>
                 </div>
+
+                <br>
+                <br>
+
+                <a href="/" class="btn">Book Another Flight</a>
             </div>
         </div>
 

@@ -29,7 +29,7 @@
     <body>
         <div class="header">
             <div class="menu">
-                <div>Flights</div>
+                <a href="/" class="logo">Flights</a>
             </div>
         </div>
 
@@ -59,23 +59,18 @@
         <br>
 
         <div class="found_flights">
-            <div>
-                <h3>Outbound</h3>
-                <div id="outbound_flights">
-                    <div class="flight">
-                        <span>No search has been executed yet...</span>
-                    </div>
+            <div id="outbound_flights">
+                <div class="flight">
+                    <span>No search has been executed yet...</span>
                 </div>
             </div>
-            <div>
-                <h3>Return</h3>
-                <div id="return_flights">
-                </div>
+            <div id="return_flights">
             </div>
         </div>
 
-        <div>
-            <br>
+        <br>
+
+        <div class="book_flight">
             <button onclick="bookFlight();">Book flight</button>
         </div>
 
@@ -141,13 +136,22 @@
                                         <input type="hidden" name="out_ar_hour" value="${arrivaltime.getHours()}:${arrivaltime.getMinutes()}">
                                         <input type="hidden" name="out_price" value="${flight.price}">
                                     </form>
-                                    ${flight.date}
-                                    :
-                                    ${flight.depart.airport.name} ${datetime.getHours()}:${datetime.getMinutes()}
-                                    to
-                                    ${flight.arrival.airport.name} ${arrivaltime.getHours()}:${arrivaltime.getMinutes()}
-                                    for
-                                    ${flight.price} €
+                                    <div class="out">
+                                        ${flight.depart.airport.name}
+                                        <br>
+                                        ${datetime.getHours()}:${datetime.getMinutes()}
+                                    </div>
+
+                                    <div class="ar">
+                                        ${flight.arrival.airport.name}
+                                        <br>
+                                        ${arrivaltime.getHours()}:${arrivaltime.getMinutes()}
+                                    </div>
+
+                                    <div class="price">
+                                        ${flight.date} <br>
+                                        ${flight.price} €
+                                    </div>
                                 </div>
                             `);
                         });
@@ -172,13 +176,22 @@
                                         <input type="hidden" name="ret_ar_hour" value="${arrivaltime.getHours()}:${arrivaltime.getMinutes()}">
                                         <input type="hidden" name="ret_price" value="${flight.price}">
                                     </form>
-                                    ${flight.date}
-                                    :
-                                    ${flight.depart.airport.name} ${datetime.getHours()}:${datetime.getMinutes()}
-                                    to
-                                    ${flight.arrival.airport.name} ${arrivaltime.getHours()}:${arrivaltime.getMinutes()}
-                                    for
-                                    ${flight.price} €
+                                    <div class="out">
+                                        ${flight.depart.airport.name}
+                                        <br>
+                                        ${datetime.getHours()}:${datetime.getMinutes()}
+                                    </div>
+
+                                    <div class="ar">
+                                        ${flight.arrival.airport.name}
+                                        <br>
+                                        ${arrivaltime.getHours()}:${arrivaltime.getMinutes()}
+                                    </div>
+
+                                    <div class="price">
+                                        ${flight.date} <br>
+                                        ${flight.price} €
+                                    </div>
                                 </div>
                             `);
                         });

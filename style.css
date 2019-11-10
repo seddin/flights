@@ -12,7 +12,9 @@ body {
 }
 
 .selected {
-    border: 1px solid #ee1b59;
+    border: 1px solid #ee1b59 !important;
+    background-color: #ee1b59 !important;
+    color: #fff !important;
 }
 .dnone {
     display: none;
@@ -31,8 +33,7 @@ body {
 .header .menu {
     width: 100%;
     height: 100%;
-    /*background-color: rgba(0, 0, 110, 0.7);*/
-    color: white;
+    padding: 10px 20px;
 }
 
 .search_box {
@@ -50,6 +51,7 @@ body {
     top: -60px;
     left: 240px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #e1e3e9;
     padding: 10px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -88,6 +90,84 @@ body {
     border: 1px solid #e1e3e9;
     padding: 10px;
     border-radius: 4px;
+    min-height: 200px;
+    max-height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.found_flights .flight {
+    padding: 10px;
+    user-select: none;
+    display: grid;
+    grid-template-areas: "out ar price";
+    border: 1px solid #e1e3e9;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.flight .out {
+    grid-area: out;
+}
+
+.flight .ar {
+    grid-area: ar;
+}
+
+.flight .price {
+    grid-area: price;
+    font-weight: bold;
+}
+
+.book_flight {
+    width: 100%;
+    padding: 0 20px;
+    display: grid;
+    place-items: end;
+}
+
+.book_flight button, .btn {
+    height: 34px;
+    width: 200px;
+    background-color: #f4ca63;
+    color: #592d08;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.btn {
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    background-image: url("playa.jpg");
+    display: grid;
+    place-items: center;
+}
+
+.flight_overview {
+    width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.logo {
+    width: 100px;
+    height: 40px;
+    border-radius: 50px;
+    display: grid;
+    place-items: center;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #222;
+    font-weight: bold;
 }
 
 a {
