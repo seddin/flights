@@ -22,50 +22,13 @@
 ?>
 <html>
     <head>
-        <title>Pruebas</title>
+        <title>Tui BE</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <style>
-            * {
-                padding: 0;
-                margin: 0;
-                box-sizing: border-box;
-            }
-            body {
-                width: 100%;
-                padding: 10px;
-            }
-            form {
-                width: 100%;
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr 1fr;
-                grid-gap: 10px;
-                color: #222;
-            }
-            .found_flights {
-                width: 100%;
-                border-top: 1px dotted #94a687;
-                padding-top: 10px;
-            }
-            .outbound_flights, .return_flights {
-                /*border: 1px solid red;*/
-            }
-            .flight {
-                width: 100%;
-                min-height: 30px;
-                background-color: #c0cfb6;
-                border: 1px solid #94a687;
-                border-radius: 4px;
-                padding: 10px;
-            }
-            .dnone {
-                display: none;
-            }
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <a href="/">HOMEEEEEEEEEEEEEEEEEEEEEEEEEE</a>
         <div>
-            <h2>Choose a Flight:</h2>
+            <h2>Search for a Flight: <a href="/">HOME</a></h2>
             <br>
             <form id="search">
                 <select id="from">
@@ -91,25 +54,28 @@
 
         <br>
 
-        <div class="found_flights">
-            <div class="outbound_flights">
-                <h3>Outbound</h3>
-
+        <div class="found_flights" style="float: left;">
+            <div>
+                <h3>Outbound:</h3>
+                <br>
                 <div id="outbound_flights">
                     <div class="flight">
-                        jsdgkjasdgfjsd
+                        <span>No search has been executed yet...</span>
                     </div>
                 </div>
             </div>
-            <div class="return_flights">
+            <br>
+            <div>
                 <h3>Return</h3>
-
+                <br>
                 <div id="return_flights">
-                    <div class="flight">
-                        jsdgkjasdgfjsd
-                    </div>
                 </div>
             </div>
+        </div>
+
+        <div style="float: left;">
+            <br>
+            <button onclick="bookFlight();">Book flight</button>
         </div>
 
         <script type="text/javascript">
@@ -166,7 +132,14 @@
 
                             $('#outbound_flights').append(`
                                 <div class="flight">
-                                    <input type="radio" id="selected_out_flight">
+                                    <form>
+                                        <input type="hidden" name="out_date" value="${flight.date}">
+                                        <input type="hidden" name="out_from" value="${flight.depart.airport.name}">
+                                        <input type="hidden" name="out_dep_hour" value="${datetime.getHours()}:${datetime.getMinutes()}">
+                                        <input type="hidden" name="out_to" value="${flight.arrival.airport.name}">
+                                        <input type="hidden" name="out_ar_hour" value="${arrivaltime.getHours()}:${arrivaltime.getMinutes()}">
+                                        <input type="hidden" name="out_price" value="${flight.price}">
+                                    </form>
                                     ${flight.date}
                                     :
                                     ${flight.depart.airport.name} ${datetime.getHours()}:${datetime.getMinutes()}
@@ -190,7 +163,14 @@
 
                             $('#return_flights').append(`
                                 <div class="flight">
-                                    <input type="radio" id="selected_ret_flight">
+                                    <form>
+                                        <input type="hidden" name="ret_date" value="${flight.date}">
+                                        <input type="hidden" name="ret_from" value="${flight.depart.airport.name}">
+                                        <input type="hidden" name="ret_dep_hour" value="${datetime.getHours()}:${datetime.getMinutes()}">
+                                        <input type="hidden" name="ret_to" value="${flight.arrival.airport.name}">
+                                        <input type="hidden" name="ret_ar_hour" value="${arrivaltime.getHours()}:${arrivaltime.getMinutes()}">
+                                        <input type="hidden" name="ret_price" value="${flight.price}">
+                                    </form>
                                     ${flight.date}
                                     :
                                     ${flight.depart.airport.name} ${datetime.getHours()}:${datetime.getMinutes()}
@@ -202,11 +182,49 @@
                             `);
                         });
 
+                        attachClicEvent();
+
                         $('#loading').hide();
                         $('#search_btn').show();
                     });
                 }
             });
+
+
+
+            function attachClicEvent () {
+                $('#outbound_flights .flight').on('click', function (e) {
+                    $('#outbound_flights .flight').removeClass("selected");
+
+                    $(e.currentTarget).addClass('selected');
+                });
+
+                $('#return_flights .flight').on('click', function (e) {
+                    $('#return_flights .flight').removeClass("selected");
+
+                    $(e.currentTarget).addClass('selected');
+                });
+            }
+
+            function bookFlight () {
+                var outFlight = $("#outbound_flights .flight.selected").find('form');
+                outFlight = $(outFlight).html();
+
+                var retFlight = $("#return_flights .flight.selected").find('form');
+                retFlight = $(retFlight).html();
+
+                if (outFlight && retFlight) {
+                    $('#flight_form').remove();
+                    $(document.body).append(`
+                        <form id="flight_form" method="POST" action="book_flight.php">
+                            ${outFlight}
+                            ${retFlight}
+                        </form>
+                    `);
+
+                    $('#flight_form').submit();
+                }
+            }
         </script>
     </body>
 </html>

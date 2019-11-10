@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    padding: 10px;
+    background-color: #25294c;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    color: #222;
+}
+.found_flights {
+    width: 60%;
+    border-top: 1px dotted #fff;
+    padding-top: 10px;
+}
+#outbound_flights, #return_flights {
+    border: 1px solid #ddd;
+    min-height: 190px;
+    max-height: 190px;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding: 10px;
+}
+.flight {
+    width: 100%;
+    min-height: 30px;
+    background-color: #242b51;;
+    border: 1px solid #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.selected {
+    border: 1px solid #ee1b59;
+}
+.dnone {
+    display: none;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.flight_overview {
+    width: 500px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
