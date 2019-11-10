@@ -34,7 +34,7 @@
                     <h2>Flights Overview</h2>
                 </div>
                 <br>
-                
+
                 <h4>Outbound Flight</h4>
                 <div>
                     <p><?= $out_date; ?></p>

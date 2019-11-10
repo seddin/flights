@@ -22,14 +22,18 @@
 ?>
 <html>
     <head>
-        <title>Tui BE</title>
+        <title>Flights</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div>
-            <h2>Search for a Flight: <a href="/">HOME</a></h2>
-            <br>
+        <div class="header">
+            <div class="menu">
+                <div>Flights</div>
+            </div>
+        </div>
+
+        <div class="search_box">
             <form id="search">
                 <select id="from">
                     <option value="">From...</option>
@@ -44,8 +48,8 @@
                     <option value="">To...</option>
                 </select>
 
-                <input type="date" id="departure_date" placeholder="Departure date">
-                <input type="date" id="return_date" placeholder="Return date">
+                <input type="date" id="departure_date" placeholder="Departure date" title="Departure Date">
+                <input type="date" id="return_date" placeholder="Return date" title="Return Date">
 
                 <button type="submit" id="search_btn">Search</button>
                 <img src="loading.gif" id="loading" height="28px" class="dnone" />
@@ -54,26 +58,23 @@
 
         <br>
 
-        <div class="found_flights" style="float: left;">
+        <div class="found_flights">
             <div>
-                <h3>Outbound:</h3>
-                <br>
+                <h3>Outbound</h3>
                 <div id="outbound_flights">
                     <div class="flight">
                         <span>No search has been executed yet...</span>
                     </div>
                 </div>
             </div>
-            <br>
             <div>
                 <h3>Return</h3>
-                <br>
                 <div id="return_flights">
                 </div>
             </div>
         </div>
 
-        <div style="float: left;">
+        <div>
             <br>
             <button onclick="bookFlight();">Book flight</button>
         </div>

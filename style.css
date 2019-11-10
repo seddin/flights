@@ -3,43 +3,14 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    outline: none;
 }
 body {
     width: 100%;
-    padding: 10px;
-    background-color: #25294c;
-    color: #fff;
+    background-color: #f5f7f9;
     font-family: 'Montserrat', sans-serif;
 }
-form {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
-    color: #222;
-}
-.found_flights {
-    width: 60%;
-    border-top: 1px dotted #fff;
-    padding-top: 10px;
-}
-#outbound_flights, #return_flights {
-    border: 1px solid #ddd;
-    min-height: 190px;
-    max-height: 190px;
-    overflow: scroll;
-    overflow-x: hidden;
-    padding: 10px;
-}
-.flight {
-    width: 100%;
-    min-height: 30px;
-    background-color: #242b51;;
-    border: 1px solid #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
+
 .selected {
     border: 1px solid #ee1b59;
 }
@@ -47,15 +18,76 @@ form {
     display: none;
 }
 
-.container {
+.header {
     width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
+    height: 140px;
+    background-image: url('playa.jpg');
+    background-repeat: no-repeat;
+    background-position: 0 -220px;
+    background-size: cover;
+    /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);*/
 }
 
-.flight_overview {
-    width: 500px;
+.header .menu {
+    width: 100%;
+    height: 100%;
+    /*background-color: rgba(0, 0, 110, 0.7);*/
+    color: white;
+}
+
+.search_box {
+    position: relative;
+    width: 100%;
+    height: 120px;
+}
+
+.search_box form {
+    position: absolute;
+    width: 820px;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    top: -60px;
+    left: 240px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.search_box input, select {
+    width: 100%;
+    background-color: #e9edf1;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    height: 32px;
+}
+
+.search_box button {
+    background-color: #f4ca63;
+    color: #592d08;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+    grid-column: 4;
+}
+
+.found_flights {
+    width: 100%;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.found_flights > div {
+    border: 1px solid #e1e3e9;
+    padding: 10px;
+    border-radius: 4px;
 }
 
 a {
